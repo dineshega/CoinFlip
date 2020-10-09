@@ -2,7 +2,7 @@
 
 h=0
 t=0
-read -p "how many times should coin flip enter a number: " flip
+read -p "how many times should coin flip enter a number more than 60: " flip
 a=0
 while [[ $a -lt $flip ]] 
 do
@@ -16,6 +16,17 @@ do
 			echo "TAILS"
 			t=$((t+1))
 	fi
+	if [ $h -eq 21 ]
+	then
+		echo "Heads Won"
+		h=$((h-t))
+		echo "by how much: " $h
+		a=$flip
+	elif [ $t -eq 21 ]
+	then
+		echo "Tails Won"
+		t=$((t-h))
+		echo "by how much: " $t
+		a=$flip
+	fi
 done
-echo "no of times heads won: " $h
-echo "no of times tails won: " $t
