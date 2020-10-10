@@ -31,5 +31,32 @@ do
 	elif [ $h -eq $t ]
 	then
 		echo "$h=$t its TIE"
+		rand=$((RANDOM%2))
+		while [[ $a -lt $flip ]]
+		do
+			a=$((a+1))
+        		case $rand in
+                		0)
+					echo "HEADS"
+                			h=$((h+1));;
+                		1)
+					echo "TAILS"
+		                	t=$((t+1));;
+                		*);;
+        		esac
+			if [ $((h-t)) -ge 2 ] 
+			then
+				echo "Heads Won"
+				h=$((h-t))
+				echo "by how much: " $h
+				a=$flip
+			elif [ $((t-h)) -ge 2 ]
+			then
+				echo "Tails Won"
+				t=$((t-h))
+				echo "by how much: " $t
+				a=$flip
+			fi
+		done
 	fi
 done	
